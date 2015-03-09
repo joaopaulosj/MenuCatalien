@@ -11,6 +11,12 @@ public class scr_Menu : MonoBehaviour
         get { return _animator.GetBool("IsOpen"); }
         set { _animator.SetBool("IsOpen", value); }
     }
+    
+    public bool PopUp
+    {
+        get { return _animator.GetBool("PopUp"); }
+        set { _animator.SetBool("PopUp", value); }
+    }
 
 	public void Awake(){
         _animator = GetComponent<Animator>();
@@ -22,7 +28,8 @@ public class scr_Menu : MonoBehaviour
 
     public void Update()
     {
-        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open") ||
+            !_animator.GetCurrentAnimatorStateInfo(0).IsName("PopUp"))
         {
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
         }
