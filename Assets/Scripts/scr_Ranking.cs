@@ -16,11 +16,22 @@ public class scr_Ranking : MonoBehaviour
     public InputField[] _inputPontos;
     public int _pontuacao;
     private int _idText = -1;
+    private int _idFase;
+    private int _qtdFases;
     #endregion
 
     #region - Start -
     void Start()
     {
+    	try{
+	        GameObject ControleJogo = GameObject.Find("ControleJogo");
+			scriptControle = ControleJogo.GetComponent(scrControleJogo);
+			_idFase = scriptControle.GetIdFase();
+			_qtdFases = scriptControle.GetQtdFases();
+    	}catch(Exception ex){
+    		Debug.Log(ex);
+    	}
+    	
         _pontuacao = (int)(UnityEngine.Random.Range(3000, 5000));
         CarregarRanking();
         ExibirRanking();
@@ -88,10 +99,15 @@ public class scr_Ranking : MonoBehaviour
     #endregion
 
 
-    #region - Menus -
+    #region - Botões -
     public void AvancarFase(int idFase)
     {
         SalvarRanking();
+        
+        if(_idFase < _qtdFases)
+        	Application.LoadLevel("sce_Fase" + (_idFase + 1));
+        else
+        	Application.LoadLevel("sce_Niveis");
     }
 
     public void AbrirMenu()
@@ -103,6 +119,7 @@ public class scr_Ranking : MonoBehaviour
     public void ReiniciarFase()
     {
         SalvarRanking();
+        Application.LoadLevel("sce_Fase" + _idFase);
     }
     #endregion
 
