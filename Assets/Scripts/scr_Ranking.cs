@@ -48,7 +48,7 @@ public class scr_Ranking : MonoBehaviour
     private void ExibirRanking()
     {
         _ListaRanking.Add(new Pontuacao { Nome = "???", Pontos = _pontuacao });
-        _ListaRanking = _ListaRanking.OrderByDescending(x => x.Pontos).ToList();
+        _ListaRanking = _ListaRanking.Where(x => x.IdFase == _idFase).OrderByDescending(x => x.Pontos).ToList();
 
 
         for (int i = 0; i < 3; i++)
