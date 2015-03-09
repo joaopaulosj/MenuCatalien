@@ -4,6 +4,7 @@ using System.Collections;
 public class ControleJogo : MonoBehaviour {
 	
 	private int _idfase = 0;
+	private _qtdfases = 0;
 	private int _pontuacao = 0;
 	
 	#region - Start -
@@ -23,6 +24,16 @@ public class ControleJogo : MonoBehaviour {
 	public int GetIdFase()
 	{
 		return _idfase;
+	}
+	
+	public void SetQtdFases(int qtdfases)
+	{
+		_qtdfases = qtdfases;
+	}
+	
+	public int GetQtdFases()
+	{
+		return _qtdfases;
 	}
 	
 	public void SetPontuacao(int pontuacao)
