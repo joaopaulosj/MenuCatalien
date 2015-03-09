@@ -24,5 +24,10 @@ public class scr_MenuManager : MonoBehaviour {
     {
         Application.LoadLevel("sce_Ranking");
     }
+    
+    public override void IniciarFase(int idfase)
+    {
+        Application.LoadLevel("sce_Fase" + idfase);
+    }
 
 }
