@@ -10,6 +10,7 @@ public class scr_Controle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//switch case com todas as telas
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
 	}
