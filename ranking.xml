@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<RankingXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Ranking>
+    <Pontuacao>
+      <Nome>CHI</Nome>
+      <Pontos>245</Pontos>
+    </Pontuacao>
+    <Pontuacao>
+      <Nome>IGO</Nome>
+      <Pontos>132</Pontos>
+    </Pontuacao>
+    <Pontuacao>
+      <Nome>VIC</Nome>
+      <Pontos>321</Pontos>
+    </Pontuacao>
+    <Pontuacao>
+      <Nome>STE</Nome>
+      <Pontos>3791</Pontos>
+    </Pontuacao>
+  </Ranking>
+</RankingXML>

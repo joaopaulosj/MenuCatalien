@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scr_Ranking.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Pontuacao.cs" Line="7" Column="30" />
+      <File FileName="Assets\Scripts\scr_Menu.cs" Line="18" Column="3" />
+      <File FileName="Assets\Scripts\scr_Ranking.cs" Line="10" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
