@@ -99,7 +99,6 @@ public class scr_Ranking : MonoBehaviour
     }
     #endregion
 
-
     #region - Botões -
     public void AvancarFase(int idFase)
     {
@@ -114,7 +113,11 @@ public class scr_Ranking : MonoBehaviour
     public void AbrirMenu()
     {
         SalvarRanking();
-        Application.LoadLevel("sce_Home");
+        
+        if(_idFase % 5 == 0)
+        	Application.LoadLevel("sce_Niveis");
+        else
+        	Application.LoadLevel("sce_Fases");
     }
 
     public void ReiniciarFase()
