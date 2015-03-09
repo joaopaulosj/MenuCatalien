@@ -5,6 +5,7 @@ using System.Collections;
 public class scr_MenuManager : MonoBehaviour {
 
     public scr_Menu CurrentMenu;
+    public scr_Menu CurrentPopup;
 
     public void Start()
     {
@@ -18,6 +19,15 @@ public class scr_MenuManager : MonoBehaviour {
 
         CurrentMenu = menu;
         CurrentMenu.IsOpen = true;
+    }
+    
+    public void ShowPopUp(scr_Menu popup)
+    {
+        if (CurrentPopup != null)
+            CurrentPopup.PopUp = false;
+
+        CurrentPopup = popup;
+        CurrentPopup.PopUp = true;
     }
 
     public void IniciarFase()
