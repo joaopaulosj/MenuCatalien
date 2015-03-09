@@ -79,7 +79,8 @@ public class scr_Ranking : MonoBehaviour
                 {
                     Nome = novoNome == "???" ? "---" : novoNome,
                     Pontos = _pontuacao,
-                    Data = DateTime.Now
+                    Data = DateTime.Now,
+                    IdFase = _idFase
                 };
 
                 var substituir = _ListaRanking.RemoveAll(x => x.Nome == "???");
