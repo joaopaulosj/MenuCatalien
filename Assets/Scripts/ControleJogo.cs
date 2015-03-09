@@ -4,14 +4,15 @@ using System.Collections;
 public class ControleJogo : MonoBehaviour {
 	
 	private int _idfase = 0;
-	private int _qtdfases = 0;
+	private int _qtdfases = 5;
 	private int _idnivel = 0;
+	private int _qtdniveis = 1;
 	private int _pontuacao = 0;
 	
 	#region - Start -
 	void Start () 
 	{
-	
+		
 	}
 	#endregion
 	
@@ -35,6 +36,16 @@ public class ControleJogo : MonoBehaviour {
 	public int GetQtdFases()
 	{
 		return _qtdfases;
+	}
+	
+	public void SetQtdNiveis(int qtdniveis)
+	{
+		_qtdniveis = qtdniveis;
+	}
+	
+	public int GetQtdNiveis()
+	{
+		return _qtdniveis;
 	}
 	
 	public void SetIdNivel(int idnivel)
