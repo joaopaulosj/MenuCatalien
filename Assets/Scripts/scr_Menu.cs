@@ -28,8 +28,7 @@ public class scr_Menu : MonoBehaviour
 
     public void Update()
     {
-        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open") ||
-            !_animator.GetCurrentAnimatorStateInfo(0).IsName("PopUp"))
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         {
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
         }

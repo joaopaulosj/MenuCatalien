@@ -12,12 +12,14 @@ public class scr_Ranking : MonoBehaviour
 
     #region - Propriedades -
     private List<Pontuacao> _ListaRanking;
+    private List<Pontuacao> _ListaSalvar;
     public InputField[] _inputNomes;
     public InputField[] _inputPontos;
     public int _pontuacao;
     private int _idText = -1;
     private int _idFase;
     private int _qtdFases;
+    private TouchScreenKeyboard keyboard;
     #endregion
 
     #region - Start -
@@ -25,9 +27,9 @@ public class scr_Ranking : MonoBehaviour
     {
     	try{
 	        GameObject ControleJogo = GameObject.Find("ControleJogo");
-			scriptControle = ControleJogo.GetComponent(scrControleJogo);
-			_idFase = scriptControle.GetIdFase();
-			_qtdFases = scriptControle.GetQtdFases();
+            var scriptControle = ControleJogo.GetComponent("scrControleJogo") as scrControleJogo;
+            _idFase = scriptControle._idfase;
+            _qtdFases = scriptControle._qtdfases;
     	}catch(Exception ex){
     		Debug.Log(ex);
     	}
@@ -42,29 +44,46 @@ public class scr_Ranking : MonoBehaviour
     #region - Ranking -
     private void CarregarRanking()
     {
-        _ListaRanking = RankingXML.Load(Path.Combine(Application.persistentDataPath, "ranking.xml")).Ranking;
+        try
+        {
+            _ListaRanking = RankingXML.Load(Path.Combine(Application.persistentDataPath, "ranking.xml")).Ranking;
+        }
+        catch (Exception ex)
+        {
+            _ListaRanking = new List<Pontuacao>();
+        }
     }
 
     private void ExibirRanking()
     {
-        _ListaRanking.Add(new Pontuacao { Nome = "???", Pontos = _pontuacao });
+        _ListaRanking.Add(new Pontuacao { Nome = "???", Pontos = _pontuacao, IdFase = _idFase });
+        _ListaSalvar = _ListaRanking;
         _ListaRanking = _ListaRanking.Where(x => x.IdFase == _idFase).OrderByDescending(x => x.Pontos).ToList();
 
-
+        
         for (int i = 0; i < 3; i++)
         {
-            var nome = _inputNomes[i];
-            var pontos = _inputPontos[i];
+            var txtNome = _inputNomes[i];
+            var txtPontos = _inputPontos[i];
 
-            nome.text = _ListaRanking[i].Nome;
-            pontos.text = _ListaRanking[i].Pontos.ToString();
+            txtNome.text = "---";
+            txtPontos.text = "---";    
 
-            if (nome.text == "???")
+            if(i + 1 <= _ListaRanking.Count)
+            {
+                txtNome.text = _ListaRanking[i].Nome;
+                txtPontos.text = _ListaRanking[i].Pontos.ToString();
+            }                        
+
+            if (txtNome.text == "???")
             {
                 _idText = i; //Encontra qual o text que tem o nome em branco, ou seja, onde o jogador vai inserir seu nome
-                nome.interactable = true;
+                txtNome.interactable = true;
             }
         }
+
+        //keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+
     }
 
     private void SalvarRanking()
@@ -83,13 +102,13 @@ public class scr_Ranking : MonoBehaviour
                     IdFase = _idFase
                 };
 
-                var substituir = _ListaRanking.RemoveAll(x => x.Nome == "???");
+                _ListaSalvar.RemoveAll(x => x.Nome == "???");
 
-                _ListaRanking.Add(novoRecorde);
+                _ListaSalvar.Add(novoRecorde);
             }
 
             var ranking = new RankingXML();
-            ranking.Save(_ListaRanking, Application.persistentDataPath +  "/ranking.xml");
+            ranking.Save(_ListaSalvar, Application.persistentDataPath + "/ranking.xml");
             Debug.Log("Ranking.xml salvo em " + Application.persistentDataPath);
         }
         catch (Exception ex)
@@ -113,11 +132,15 @@ public class scr_Ranking : MonoBehaviour
     public void AbrirMenu()
     {
         SalvarRanking();
-        
-        if(_idFase % 5 == 0)
-        	Application.LoadLevel("sce_Niveis");
+
+        if (_idFase % 5 == 0)
+        {
+            Application.LoadLevel("sce_Home");
+        }
         else
-        	Application.LoadLevel("sce_Fases");
+        {
+            Application.LoadLevel("sce_Home");
+        }
     }
 
     public void ReiniciarFase()

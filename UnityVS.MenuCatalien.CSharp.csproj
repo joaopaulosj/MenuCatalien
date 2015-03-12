@@ -54,13 +54,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ControleJogo.cs" />
     <Compile Include="Assets\Scripts\Pontuacao.cs" />
     <Compile Include="Assets\Scripts\RankingXML.cs" />
+    <Compile Include="Assets\Scripts\scrControleJogo.cs" />
     <Compile Include="Assets\Scripts\scr_Controle.cs" />
+    <Compile Include="Assets\Scripts\scr_ControleJogo.cs" />
+    <Compile Include="Assets\Scripts\scr_Intro.cs" />
     <Compile Include="Assets\Scripts\scr_Menu.cs" />
     <Compile Include="Assets\Scripts\scr_MenuManager.cs" />
-    <Compile Include="Assets\Scripts\scr_NomeRanking.cs" />
+    <Compile Include="Assets\Scripts\scr_Popup.cs" />
     <Compile Include="Assets\Scripts\scr_Ranking.cs" />
   </ItemGroup>
   <ItemGroup>
